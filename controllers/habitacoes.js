@@ -150,8 +150,6 @@ module.exports = function(app){
         let update = true;
         let vinculo = null;
 
-        console.log("result", result);
-
         if (result.length >= 1) {
           result.map(item => {
             if (item.id != id) {
@@ -215,13 +213,15 @@ module.exports = function(app){
               console.log("error > two", error);
               res.status(400).json(error);
             } else {
-              result.map((rs, i) => {
-                dados.composicao_familiar.map((cf, ii) => {
-                  if (i == ii) {
-                    cf.id = rs.insertId;
-                  }
+              if (result.length >= 1) {
+                result.map((rs, i) => {
+                  dados.composicao_familiar.map((cf, ii) => {
+                    if (i == ii) {
+                      cf.id = rs.insertId;
+                    }
+                  });
                 });
-              });
+              }
               connection.end();
               res.status(201).json(dados);
             }
