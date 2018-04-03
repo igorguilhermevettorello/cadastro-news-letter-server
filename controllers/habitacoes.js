@@ -159,8 +159,10 @@ module.exports = function(app){
           connection.end();
           res.status(200).json();
         } else {
-          msg.msg = "Cpf já está vinculado ao cadastro:" + vinculo;
-          msg.cadastrar = false;
+          let msg = {
+            msg: "Cpf já está vinculado ao cadastro:" + vinculo,
+            cadastrar: false
+          };
           connection.end();
           res.status(403).json(msg);
         }
