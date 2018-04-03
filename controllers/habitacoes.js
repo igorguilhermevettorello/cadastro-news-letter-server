@@ -150,6 +150,8 @@ module.exports = function(app){
         let update = true;
         let vinculo = null;
 
+        console.log("result", result);
+
         if (result.length >= 1) {
           result.map(item => {
             if (item.id != id) {
