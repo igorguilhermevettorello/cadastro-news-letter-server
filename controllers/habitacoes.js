@@ -146,14 +146,18 @@ module.exports = function(app){
         connection.end();
         res.status(500).json(msg);
       } else {
+
         let update = true;
         let vinculo = null;
-        result.map(item => {
-          if (item.id != id) {
-            update = false;
-            vinculo = item.id;
-          }
-        });
+
+        if (result.length >= 1) {
+          result.map(item => {
+            if (item.id != id) {
+              update = false;
+              vinculo = item.id;
+            }
+          });
+        }
 
         if (update) {
           connection.end();
