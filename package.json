@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sequelize db:migrate && node app"
+    "start": "node app",
+    "start_old": "sequelize db:migrate && node app"
   },
   "keywords": [
     "api",
