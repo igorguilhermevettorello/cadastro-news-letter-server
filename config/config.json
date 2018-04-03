@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "mysqlroot",
-    "database": "api_sistema_node",
+    "database": "api_sistema_habitacao",
     "host": "localhost",
     "dialect": "mysql",
     "logging": true
@@ -10,7 +10,7 @@
   "test": {
     "username": "root",
     "password": "mysqlroot",
-    "database": "api_sistema_node_teste",
+    "database": "api_sistema_habitacao_teste",
     "host": "localhost",
     "dialect": "mysql",
     "logging": true

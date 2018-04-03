@@ -9,6 +9,7 @@ module.exports = function(app){
 
     usersDAO.verifyLogin(user, (error, result) => {
       if (error) {
+        connection.end();
         res.status(401).json({msg: "Usuário não encotrado."});
       } else {
         if (result.length == 1) {
@@ -21,9 +22,11 @@ module.exports = function(app){
           });
 
           user.auth_token = token;
+          connection.end();
           res.status(200).json(user);
 
         } else {
+          connection.end();
           res.status(401).json({msg: "Usuário não encotrado."});
         }
       }
@@ -31,7 +34,6 @@ module.exports = function(app){
   });
 
   app.use('/*', function(req, res, next){
-
     var token = req.headers['x-access-token']; // busca o token no header da requisição
     if (token) {
       console.log('Token recebido, decodificando');
@@ -52,5 +54,4 @@ module.exports = function(app){
       res.status(401).json({msg: "Nenhum token enviado."});
     }
   });
-
 }

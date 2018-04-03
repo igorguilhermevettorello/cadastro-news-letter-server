@@ -46,23 +46,21 @@ module.exports = function(app){
           .map((item) => item);
 
       }
+      connection.end();
       res.status(201).json(menu);
     })
   });
 
   app.get('/perfil/perfil/', function(req, res){
     let id = req.usuario.id;
-
     let connection = app.persistencia.connectionFactory();
     let usersDAO = new app.persistencia.UsersDAO(connection);
     usersDAO.getById(id, (error, result) => {
-
       if (error) {
-
         console.log("error", error);
-        let msg = {msg: "Falha ao salva registro. Tente novamente."}
+        let msg = {msg: "Falha ao salva registro. Tente novamente."};
+        connection.end();
         res.status(404).json(msg);
-
       } else {
 
         let user = {
@@ -76,30 +74,30 @@ module.exports = function(app){
           if (error) {
 
             console.log("error", error);
-            let msg = {msg: "Falha ao salva registro. Tente novamente."}
+            let msg = {msg: "Falha ao salva registro. Tente novamente."};
+            connection.end();
             res.status(404).json(msg);
 
           } else {
 
-            let imagem = `${req.protocol}://${req.get('host')}/${result[0].imagem}`;
-            //console.log("protocol", req.protocol);
-            //console.log("host", req.get('host'));
-            //console.log("pathname", req.originalUrl);
-            //console.log("_imagem", _imagem);
+            if (typeof result[0] === 'undefined') {
+              user.pessoa = {};
+            } else {
+              let imagem = `${req.protocol}://${req.get('host')}/${result[0].imagem}`;
+              user.pessoa = {
+                id: result[0].id,
+                nome: result[0].nome,
+                email: result[0].email,
+                imagem: imagem,
+                createdAt: result[0].createdAt,
+                updatedAt: result[0].updatedAt
+              };
+            }
 
-            user.pessoa = {
-              id: result[0].id,
-              nome: result[0].nome,
-              email: result[0].email,
-              imagem: imagem,
-              createdAt: result[0].createdAt,
-              updatedAt: result[0].updatedAt
-            };
-
+            connection.end();
             res.status(201).json(user);
           }
         });
-
       }
     })
   });
@@ -126,7 +124,8 @@ module.exports = function(app){
     usersDAO.update(user, (error, result) => {
       if (error) {
         console.log("error", error);
-        let msg = {msg: "Falha ao salva registro. Tente novamente."}
+        let msg = {msg: "Falha ao salva registro. Tente novamente."};
+        connection.end();
         res.status(404).json(msg);
       } else {
         console.log("result", result);
@@ -134,10 +133,12 @@ module.exports = function(app){
         pessoaDAO.update(pessoa, (error, result) => {
           if (error) {
             console.log("error", error);
-            let msg = {msg: "Falha ao salva registro. Tente novamente."}
+            let msg = {msg: "Falha ao salva registro. Tente novamente."};
+            connection.end();
             res.status(404).json(msg);
           } else {
-            let msg = {msg: "Registro salvo com sucesso."}
+            let msg = {msg: "Registro salvo com sucesso."};
+            connection.end();
             res.status(200).json(msg);
           }
         });
