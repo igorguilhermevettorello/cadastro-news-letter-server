@@ -9,20 +9,9 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    queryInterface.createTable('users', {
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      login: Sequelize.STRING,
-      password: Sequelize.STRING,
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
-      },
+    queryInterface.addColumn('habitacoes', 'titular', {
+      type: Sequelize.STRING,
+      after: "inscricao_cadastro_unico_1"
     });
   },
 

@@ -9,10 +9,9 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    queryInterface.addColumn('menus', 'deleted', {
-      type: Sequelize.BOOLEAN,
-      after: "id",
-      defaultValue: false
+    queryInterface.addIndex('users', ['login'], {
+      indexName: 'unique_login',
+      indicesType: 'UNIQUE'
     });
   },
 

@@ -9,10 +9,14 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    queryInterface.addColumn('users', 'deleted', {
-      type: Sequelize.BOOLEAN,
-      after: "id",
-      defaultValue: false
+    queryInterface.addColumn('habitacoes', 'moradia_atual', {
+      type: Sequelize.STRING,
+      after: "cooperativa_nome"
+    });
+
+    queryInterface.addColumn('habitacoes', 'ocupacao', {
+      type: Sequelize.STRING,
+      after: "moradia_atual"
     });
   },
 

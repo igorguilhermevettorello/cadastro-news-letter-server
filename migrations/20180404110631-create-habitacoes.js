@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      deleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       titular_1: {
         type: Sequelize.STRING
       },
@@ -35,6 +39,9 @@ module.exports = {
       rg_1: {
         type: Sequelize.STRING
       },
+      viculo_titular_1_com_titular_2: {
+        type: Sequelize.STRING
+      },
       atividade_1: {
         type: Sequelize.STRING
       },
@@ -48,6 +55,36 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       empresa_1: {
+        type: Sequelize.STRING
+      },
+      pcd_1: {
+        type: Sequelize.BOOLEAN
+      },
+      pcd_qual_1: {
+        type: Sequelize.STRING
+      },
+      doenca_grave_1: {
+        type: Sequelize.BOOLEAN
+      },
+      doenca_qual_1: {
+        type: Sequelize.STRING
+      },
+      bolsa_familia_1: {
+        type: Sequelize.BOOLEAN
+      },
+      bolsa_familia_valor_1: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      bpc_1: {
+        type: Sequelize.BOOLEAN
+      },
+      bpc_valor_1: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      inscrito_cadastro_unico_1: {
+        type: Sequelize.BOOLEAN
+      },
+      inscricao_cadastro_unico_1: {
         type: Sequelize.STRING
       },
       titular_2: {
@@ -77,6 +114,9 @@ module.exports = {
       rg_2: {
         type: Sequelize.STRING
       },
+      viculo_titular_2_com_titular_1: {
+        type: Sequelize.STRING
+      },
       atividade_2: {
         type: Sequelize.STRING
       },
@@ -90,6 +130,48 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       empresa_2: {
+        type: Sequelize.STRING
+      },
+      pcd_2: {
+        type: Sequelize.BOOLEAN
+      },
+      pcd_qual_2: {
+        type: Sequelize.STRING
+      },
+      doenca_grave_2: {
+        type: Sequelize.BOOLEAN
+      },
+      doenca_qual_2: {
+        type: Sequelize.STRING
+      },
+      bolsa_familia_2: {
+        type: Sequelize.BOOLEAN
+      },
+      bolsa_familia_valor_2: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      bpc_2: {
+        type: Sequelize.BOOLEAN
+      },
+      bpc_valor_2: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      inscrito_cadastro_unico_2: {
+        type: Sequelize.BOOLEAN
+      },
+      inscricao_cadastro_unico_2: {
+        type: Sequelize.STRING
+      },
+      endereco: {
+        type: Sequelize.STRING
+      },
+      numero: {
+        type: Sequelize.STRING
+      },
+      bairro: {
+        type: Sequelize.STRING
+      },
+      telefones: {
         type: Sequelize.STRING
       },
       tempo_moradia_anos: {
@@ -107,65 +189,8 @@ module.exports = {
       cooperativa_inscricao: {
         type: Sequelize.BOOLEAN
       },
-      moradia_atual: {
+      cooperativa_nome: {
         type: Sequelize.STRING
-      },
-      familia_constituida: {
-        type: Sequelize.BOOLEAN
-      },
-      idoso_sozinho: {
-        type: Sequelize.BOOLEAN
-      },
-      pcd_sozinho: {
-        type: Sequelize.BOOLEAN
-      },
-      pcd: {
-        type: Sequelize.BOOLEAN
-      },
-      pcd_cadeirante: {
-        type: Sequelize.BOOLEAN
-      },
-      pcd_familia: {
-        type: Sequelize.BOOLEAN
-      },
-      pcd_chefe_familia: {
-        type: Sequelize.BOOLEAN
-      },
-      pcd_qual: {
-        type: Sequelize.STRING
-      },
-      doenca_grave: {
-        type: Sequelize.BOOLEAN
-      },
-      doenca_grave_familia: {
-        type: Sequelize.BOOLEAN
-      },
-      doenca_grave_chefe_familia: {
-        type: Sequelize.BOOLEAN
-      },
-      doenca_grave_qual: {
-        type: Sequelize.STRING
-      },
-      bolsa_familia: {
-        type: Sequelize.BOOLEAN
-      },
-      bolsa_familia_valor: {
-        type: Sequelize.DECIMAL(10,2)
-      },
-      inscrito_cadastro_unico: {
-        type: Sequelize.BOOLEAN
-      },
-      inscricao_cadastro_unico: {
-        type: Sequelize.STRING
-      },
-      bcp: {
-        type: Sequelize.BOOLEAN
-      },
-      bcp_valor: {
-        type: Sequelize.DECIMAL(10,2)
-      },
-      beneficio_idoso_deficiente: {
-        type: Sequelize.BOOLEAN
       },
       cras: {
         type: Sequelize.BOOLEAN
@@ -191,11 +216,8 @@ module.exports = {
       comprovante_deficiencia_doenca_grave: {
         type: Sequelize.BOOLEAN
       },
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
+      observacao: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

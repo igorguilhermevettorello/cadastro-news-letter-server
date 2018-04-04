@@ -1,17 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var menus = sequelize.define('menus', {
+  var users = sequelize.define('users', {
     id: DataTypes.INTEGER,
     deleted: DataTypes.BOOLEAN,
-    descricao: DataTypes.STRING,
-    controller: DataTypes.STRING,
-    acao: DataTypes.STRING,
-    menu_id: DataTypes.INTEGER,
+    login: DataTypes.STRING,
+    password: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {});
-  menus.associate = function(models) {
+  users.associate = function(models) {
     // associations can be defined here
   };
-  return menus;
+  return users;
 };

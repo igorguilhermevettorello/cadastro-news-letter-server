@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      deleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       nome_completo: {
         type: Sequelize.STRING
       },
@@ -17,7 +21,10 @@ module.exports = {
       dt_nascimento: {
         type: Sequelize.DATE
       },
-      cpf_rg_cn: {
+      cpf: {
+        type: Sequelize.STRING
+      },
+      rg: {
         type: Sequelize.STRING
       },
       escolaridade: {
@@ -29,18 +36,42 @@ module.exports = {
       renda: {
         type: Sequelize.DECIMAL(10,2)
       },
+      pcd: {
+        type: Sequelize.BOOLEAN
+      },
+      pcd_qual: {
+        type: Sequelize.STRING
+      },
+      doenca_grave: {
+        type: Sequelize.BOOLEAN
+      },
+      doenca_qual: {
+        type: Sequelize.STRING
+      },
+      bolsa_familia: {
+        type: Sequelize.BOOLEAN
+      },
+      bolsa_familia_valor: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      bpc: {
+        type: Sequelize.BOOLEAN
+      },
+      bpc_valor: {
+        type: Sequelize.DECIMAL(10,2)
+      },
+      inscrito_cadastro_unico: {
+        type: Sequelize.BOOLEAN
+      },
+      inscricao_cadastro_unico: {
+        type: Sequelize.STRING
+      },
       habitacao_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "habitacoes",
           key: "id"
         }
-      },
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -53,6 +84,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('composicao_familiar');
+    return queryInterface.dropTable('composicao_familiars');
   }
 };

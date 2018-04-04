@@ -14,7 +14,7 @@ module.exports = function(app){
 
   app.get('/habitacoes/habitacoes/:page', (req, res) => {
 
-    let limit = 2;
+    let limit = 4;
     let pagina = (isNaN(parseInt(req.params.page))) ? 1 : parseInt(req.params.page);
     pagina = (pagina == 0) ? 1 : pagina;
 
@@ -72,7 +72,6 @@ module.exports = function(app){
           });
 
           let page = (pagina - 1) * limit;
-          page = (page < 0) ? page * (-1) : page;
           habitacoesDAO.getListPaginate(page, limit, (error, result) => {
             if (error) {
               connection.end();
@@ -182,8 +181,10 @@ module.exports = function(app){
     habitacao.nascimento_2 = formatDate(habitacao.nascimento_2);
     habitacao.renda_1 = formatDecimal(habitacao.renda_1);
     habitacao.renda_2 = formatDecimal(habitacao.renda_2);
-    habitacao.bcp_valor = formatDecimal(habitacao.bcp_valor);
-    habitacao.bolsa_familia_valor = formatDecimal(habitacao.bolsa_familia_valor);
+    habitacao.bolsa_familia_valor_1 = formatDecimal(habitacao.bolsa_familia_valor_1);
+    habitacao.bpc_valor_1 = formatDecimal(habitacao.bpc_valor_1);
+    habitacao.bolsa_familia_valor_2 = formatDecimal(habitacao.bolsa_familia_valor_2);
+    habitacao.bpc_valor_2 = formatDecimal(habitacao.bpc_valor_2);
     habitacao.tempo_moradia_anos = (isNaN(parseInt(habitacao.tempo_moradia_anos))) ? 0 : parseInt(habitacao.tempo_moradia_anos);
     habitacao.tempo_moradia_meses = (isNaN(parseInt(habitacao.tempo_moradia_meses))) ? 0 : parseInt(habitacao.tempo_moradia_meses);
 
@@ -204,6 +205,8 @@ module.exports = function(app){
             item.habitacao_id = dados.id;
             item.dt_nascimento = formatDate(item.dt_nascimento);
             item.renda = formatDecimal(item.renda);
+            item.bolsa_familia_valor = formatDecimal(item.bolsa_familia_valor);
+            item.bpc_valor = formatDecimal(item.bpc_valor);
           });
 
           let composicaoFamiliarDAO = new app.persistencia.ComposicaoFamiliarDAO(connection);
@@ -240,16 +243,17 @@ module.exports = function(app){
     let dados = req.body;
 
     let habitacao = dados.habitacoes;
+    habitacao.id = id;
     habitacao.nascimento_1 = formatDate(habitacao.nascimento_1);
     habitacao.nascimento_2 = formatDate(habitacao.nascimento_2);
     habitacao.renda_1 = formatDecimal(habitacao.renda_1);
     habitacao.renda_2 = formatDecimal(habitacao.renda_2);
-    habitacao.bcp_valor = formatDecimal(habitacao.bcp_valor);
-    habitacao.bolsa_familia_valor = formatDecimal(habitacao.bolsa_familia_valor);
+    habitacao.bolsa_familia_valor_1 = formatDecimal(habitacao.bolsa_familia_valor_1);
+    habitacao.bpc_valor_1 = formatDecimal(habitacao.bpc_valor_1);
+    habitacao.bolsa_familia_valor_2 = formatDecimal(habitacao.bolsa_familia_valor_2);
+    habitacao.bpc_valor_2 = formatDecimal(habitacao.bpc_valor_2);
     habitacao.tempo_moradia_anos = (isNaN(parseInt(habitacao.tempo_moradia_anos))) ? 0 : parseInt(habitacao.tempo_moradia_anos);
     habitacao.tempo_moradia_meses = (isNaN(parseInt(habitacao.tempo_moradia_meses))) ? 0 : parseInt(habitacao.tempo_moradia_meses);
-
-    console.log("habitacao", habitacao);
 
     let connection = app.persistencia.connectionFactory();
     let habitacoesDAO = new app.persistencia.HabitacoesDAO(connection);
@@ -269,6 +273,8 @@ module.exports = function(app){
             item.habitacao_id = dados.id;
             item.dt_nascimento = formatDate(item.dt_nascimento);
             item.renda = formatDecimal(item.renda);
+            item.bolsa_familia_valor = formatDecimal(item.bolsa_familia_valor);
+            item.bpc_valor = formatDecimal(item.bpc_valor);
           });
 
           let composicaoFamiliarDAO = new app.persistencia.ComposicaoFamiliarDAO(connection);
@@ -293,6 +299,21 @@ module.exports = function(app){
           connection.end();
           res.status(201).json(dados);
         }
+      }
+    });
+  });
+
+  app.delete('/habitacoes/habitacao/:id', (req, res) => {
+    let id = req.params.id;
+    let connection = app.persistencia.connectionFactory();
+    let habitacoesDAO = new app.persistencia.HabitacoesDAO(connection);
+    habitacoesDAO.delete(id, (error, result) => {
+      if (error) {
+        connection.end();
+        res.status(404).json(error);
+      } else {
+        connection.end();
+        res.status(204).json(result);
       }
     });
   });

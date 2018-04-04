@@ -13,7 +13,6 @@ let storage = multer.diskStorage({
 });
 
 let fileFilter = (req, file, cb) => {
-  console.log("fileFilter");
   // reject a file
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
@@ -128,7 +127,6 @@ module.exports = function(app){
         connection.end();
         res.status(404).json(msg);
       } else {
-        console.log("result", result);
         let pessoaDAO = new app.persistencia.PessoaDAO(connection);
         pessoaDAO.update(pessoa, (error, result) => {
           if (error) {
