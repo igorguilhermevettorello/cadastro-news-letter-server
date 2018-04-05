@@ -1,4 +1,2 @@
 public/pdf/*
 uploads/*
-config/config.json
-persistencia/connectionFactory.js
