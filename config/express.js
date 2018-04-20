@@ -11,6 +11,9 @@ module.exports = () => {
 
   app.use('/uploads', express.static('uploads'));
   app.use('/public/pdf', express.static('public/pdf'));
+  app.use('/public/imagem', express.static('public/imagem'));
+  app.use('/public/newsletter', express.static('public/newsletter'));
+
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(cors());

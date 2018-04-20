@@ -9,7 +9,7 @@ function createDBConnection() {
       host: 'localhost',
       user: 'root',
       password: 'mysqlroot',
-      database: 'api_sistema_habitacao',
+      database: 'api_sistema_newsletter',
       multipleStatements: true
     });
   }
@@ -21,17 +21,17 @@ function createDBConnection() {
       host: 'localhost',
       user: 'root',
       password: 'mysqlroot',
-      database: 'api_sistema_habitacao_teste',
+      database: 'api_sistema_newsletter_teste',
       multipleStatements: true
     });
   }
 
   if (process.env.NODE_ENV == 'production') {
     return mysql.createConnection({
-      host: 'us-cdbr-iron-east-05.cleardb.net',
-      user: 'bae2ec6913efd3',
-      password: 'af9ecabd',
-      database: 'heroku_29c6f15d3273e1e',
+      host: '',
+      user: '',
+      password: '',
+      database: '',
       multipleStatements: true
     });
   }

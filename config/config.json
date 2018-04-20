@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "mysqlroot",
-    "database": "api_sistema_habitacao",
+    "database": "api_sistema_newsletter",
     "host": "localhost",
     "dialect": "mysql",
     "logging": true
@@ -10,16 +10,16 @@
   "test": {
     "username": "root",
     "password": "mysqlroot",
-    "database": "api_sistema_habitacao_teste",
+    "database": "api_sistema_newsletter_test",
     "host": "localhost",
     "dialect": "mysql",
     "logging": true
   },
   "production": {
-    "username": "bae2ec6913efd3",
-    "password": "af9ecabd",
-    "database": "heroku_29c6f15d3273e1e",
-    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "username": "username",
+    "password": "password",
+    "database": "database",
+    "host": "host",
     "dialect": "mysql",
     "logging": true
   }
