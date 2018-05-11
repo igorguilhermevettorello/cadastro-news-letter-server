@@ -28,10 +28,10 @@ function createDBConnection() {
 
   if (process.env.NODE_ENV == 'production') {
     return mysql.createConnection({
-      host: '',
-      user: '',
-      password: '',
-      database: '',
+      host: 'us-cdbr-iron-east-04.cleardb.net',
+      username: 'b2089572977023',
+      password: '86b5b957',
+      database: 'heroku_9d9214ebdf4b7de',
       multipleStatements: true
     });
   }

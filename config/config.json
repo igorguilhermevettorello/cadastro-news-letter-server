@@ -16,10 +16,10 @@
     "logging": true
   },
   "production": {
-    "username": "username",
-    "password": "password",
-    "database": "database",
-    "host": "host",
+    "host": "us-cdbr-iron-east-04.cleardb.net",
+    "username": "b2089572977023",
+    "password": "86b5b957",
+    "database": "heroku_9d9214ebdf4b7de",
     "dialect": "mysql",
     "logging": true
   }
