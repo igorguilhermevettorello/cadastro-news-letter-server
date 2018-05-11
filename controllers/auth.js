@@ -9,9 +9,11 @@ module.exports = function(app){
 
     usersDAO.verifyLogin(user, (error, result) => {
       if (error) {
+        console.log("auth error 1", error);
         connection.end();
         res.status(401).json({msg: "Usuário não encotrado."});
       } else {
+        console.log("auth result", result);
         if (result.length == 1) {
 
           let id = null;
